@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> leftRigthDifference(vector<int>& nums) {
+        vector<int>left;
+        vector<int>right;
+         vector<int>diff;
+        left.push_back(0);
+        int leftsum=0;
+        for(int i=1;i<nums.size();i++){
+            leftsum=leftsum+nums[i-1];
+            left.push_back(leftsum);
+        }
+        right.push_back(0);
+          int rightsum=0;
+           for(int i=nums.size()-2;i>=0;i--){
+            rightsum=rightsum+nums[i+1];
+            right.push_back(rightsum);
+        }
+        reverse(right.begin(),right.end());
+    for(int i=0;i<nums.size();i++)
+    {
+     diff.push_back(abs(left[i]-right[i]));
+    }
+    return diff;
+        
+    }
+};
